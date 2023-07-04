@@ -4,6 +4,7 @@ using SoccerApi.Data;
 using SoccerApi.Models.DTO;
 using SoccerApi.Models;
 using System.Numerics;
+using System.Diagnostics.Metrics;
 
 namespace SoccerApi.Controllers
 {
@@ -97,6 +98,46 @@ namespace SoccerApi.Controllers
             };
             //Returns 201 after creation, sends the new Id of the item just created
             return CreatedAtAction(nameof(GetById), new { id = playerModel.Id }, playerDto);
+        }
+
+        [HttpDelete]
+        [Route("{id:guid}")]
+        public IActionResult Delete([FromRoute] Guid id)
+        {
+            var player = dbContext.Players.Find(id);
+            if (player != null)
+            {
+                dbContext.Remove(player);
+                dbContext.SaveChanges();
+                return Ok(player);
+            }
+            return NotFound();
+        }
+
+
+        [HttpPut]
+        [Route("{id:guid}")]
+        public IActionResult Update([FromRoute] Guid id, PlayerRequest playerRequest)
+        {
+            //Try to find the id in the database
+            var player = dbContext.Players.Find(id);
+            if (player != null)
+            {
+                player.Assist = playerRequest.Assist;
+                player.Name = playerRequest.Name;
+                player.TeamId = playerRequest.TeamId;
+                player.LeagueId = playerRequest.LeagueId;
+                player.Country = playerRequest.Country;
+                player.Goal = playerRequest.Goal;
+
+                        
+                //save the database after making changes
+                dbContext.SaveChanges();
+                return Ok(player);
+            }
+
+            //return saying the id is not found in the database
+            return NotFound();
         }
     }
 }

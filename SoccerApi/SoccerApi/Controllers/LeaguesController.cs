@@ -76,5 +76,44 @@ namespace SoccerApi.Controllers
             //Returns 201 after creation, sends the new Id of the item just created
             return CreatedAtAction(nameof(GetById),new {id = leagueModel.Id},leagueDto);
         }
+
+        [HttpDelete]
+        [Route("{id:guid}")]
+        public IActionResult Delete([FromRoute] Guid id)
+        {
+            var league = dbContext.Leagues.Find(id);
+            if (league != null)
+            {
+                dbContext.Remove(league);
+                dbContext.SaveChanges();
+                return Ok(league);
+            }
+            return NotFound();
+        }
+
+
+        [HttpPut]
+        [Route("{id:guid}")]
+        public IActionResult Update([FromRoute] Guid id, LeagueRequest leagueRequest)
+        {
+            //Try to find the id in the database
+            var league = dbContext.Leagues.Find(id);
+            if (league != null)
+            {
+
+             
+
+                league.HomeLeague = leagueRequest.HomeLeague;
+                league.EuropeLeague = leagueRequest.EuropeLeague;
+
+
+                //save the database after making changes
+                dbContext.SaveChanges();
+                return Ok(league);
+            }
+
+            //return saying the id is not found in the database
+            return NotFound();
+        }
     }
 }
