@@ -5,6 +5,7 @@ using SoccerApi.Models.DTO;
 using SoccerApi.Models;
 using System.Numerics;
 using System.Diagnostics.Metrics;
+using Microsoft.EntityFrameworkCore;
 
 namespace SoccerApi.Controllers
 {
@@ -18,10 +19,10 @@ namespace SoccerApi.Controllers
             this.dbContext = dbContext;
         }
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<ActionResult> GetAll()
         {
 
-            var players = dbContext.Players.ToList();
+            var players = await dbContext.Players.ToListAsync();
 
             //Map Models to DTOs
             var playerDto = new List<PlayerDto>();
@@ -43,9 +44,9 @@ namespace SoccerApi.Controllers
         }
         [HttpGet]
         [Route("{id:Guid}")]
-        public IActionResult GetById([FromRoute] Guid id)
+        public async Task<ActionResult> GetById([FromRoute] Guid id)
         {
-            var player = dbContext.Players.Find(id);
+            var player = await dbContext.Players.FindAsync(id);
             if (player == null)
             {
                 return NotFound();
@@ -66,7 +67,7 @@ namespace SoccerApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] PlayerRequest playerRequest)
+        public async Task<ActionResult> Create([FromBody] PlayerRequest playerRequest)
         {
             //Map Dto to model
             var playerModel = new Player
@@ -82,7 +83,7 @@ namespace SoccerApi.Controllers
 
             //Use model to create League, add to database
             dbContext.Players.Add(playerModel);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
 
             //Map model back to Dto
             var playerDto = new PlayerDto
@@ -102,13 +103,13 @@ namespace SoccerApi.Controllers
 
         [HttpDelete]
         [Route("{id:guid}")]
-        public IActionResult Delete([FromRoute] Guid id)
+        public async Task<ActionResult> Delete([FromRoute] Guid id)
         {
-            var player = dbContext.Players.Find(id);
+            var player = await dbContext.Players.FindAsync(id);
             if (player != null)
             {
                 dbContext.Remove(player);
-                dbContext.SaveChanges();
+                await dbContext.SaveChangesAsync();
                 return Ok(player);
             }
             return NotFound();
@@ -117,10 +118,10 @@ namespace SoccerApi.Controllers
 
         [HttpPut]
         [Route("{id:guid}")]
-        public IActionResult Update([FromRoute] Guid id, PlayerRequest playerRequest)
+        public async Task<ActionResult> Update([FromRoute] Guid id, PlayerRequest playerRequest)
         {
             //Try to find the id in the database
-            var player = dbContext.Players.Find(id);
+            var player = await dbContext.Players.FindAsync(id);
             if (player != null)
             {
                 player.Assist = playerRequest.Assist;
@@ -132,7 +133,7 @@ namespace SoccerApi.Controllers
 
                         
                 //save the database after making changes
-                dbContext.SaveChanges();
+                await dbContext.SaveChangesAsync();
                 return Ok(player);
             }
 
