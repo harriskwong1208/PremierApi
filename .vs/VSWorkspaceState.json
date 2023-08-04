@@ -2,12 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\SoccerApi",
+    "\\SoccerApi\\Premier.Web",
+    "\\SoccerApi\\Premier.Web\\Pages",
     "\\SoccerApi\\SoccerApi",
     "\\SoccerApi\\SoccerApi\\Controllers",
     "\\SoccerApi\\SoccerApi\\Data",
     "\\SoccerApi\\SoccerApi\\Migrations",
     "\\SoccerApi\\SoccerApi\\Models"
   ],
-  "SelectedNode": "\\SoccerApi\\SoccerApi.sln",
+  "SelectedNode": "\\SoccerApi\\Premier.Web\\Pages\\Index.cshtml",
   "PreviewInSolutionExplorer": false
 }

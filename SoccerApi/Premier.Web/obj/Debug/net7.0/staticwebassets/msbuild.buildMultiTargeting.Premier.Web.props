@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Premier.Web.props" />
+</Project>

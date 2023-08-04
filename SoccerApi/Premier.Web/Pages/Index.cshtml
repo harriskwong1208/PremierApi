@@ -4,7 +4,30 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<ul id="leagues-list"></ul>
+
+@section Scripts{
+    <script>
+        let url = "https://localhost:7084/api/Leagues";
+        let leagueslist = document.getElementById("leagues-list");
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => showLeagues(data))
+            .catch(e =>{
+                alert('Error');
+                console.error(e);
+            })
+
+        function showLeagues(leagues){
+            leagues.forEach(league =>{
+                let li = document.createElement("li");
+                let text = `Home league: ${league.HomeLeague}, Europe league: ${league.EuropeLeague}`;
+                li.append(
+                    document.createTextNode(text));
+                leagueslist.appendChild(li);
+            })
+        }
+
+    </script>
+}
