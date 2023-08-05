@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "oMu9b1AbwQPEs0sWXtDoOj10gOuQ1CaEaNYKEhzLi98dJt1LH99U5gmU+BmLuaGkE+PfLHPxazimoVo+85x1+g==",
+  "dgSpecHash": "V+KN3BCHu2ihgeLS1/Yf1ym2jYWXlA/TAB6DwxPUT0vQxcXdj8RJL5Ey7b4Gea/W8QRR58OH4cNe6cIl2Fporg==",
   "success": true,
   "projectFilePath": "C:\\Users\\harri\\Desktop\\SoccerApi\\SoccerApi\\SoccerApi\\SoccerApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\harri\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\harri\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\harri\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\harri\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\harri\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.9\\microsoft.aspnetcore.authentication.jwtbearer.7.0.9.nupkg.sha512",
     "C:\\Users\\harri\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.5\\microsoft.aspnetcore.openapi.7.0.5.nupkg.sha512",
     "C:\\Users\\harri\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\harri\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
