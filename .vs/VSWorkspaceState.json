@@ -10,6 +10,6 @@
     "\\SoccerApi\\SoccerApi\\Migrations",
     "\\SoccerApi\\SoccerApi\\Models"
   ],
-  "SelectedNode": "\\SoccerApi\\SoccerApi\\Controllers\\AuthController.cs",
+  "SelectedNode": "\\SoccerApi\\SoccerApi\\Controllers\\TeamsController.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace SoccerApi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController,Authorize]
+    [ApiController]
     public class TeamsController : ControllerBase
     {
         private readonly SoccerDbContext dbContext;

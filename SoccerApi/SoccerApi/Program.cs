@@ -1,14 +1,18 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SoccerApi.Data;
 using Swashbuckle.AspNetCore.Filters;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
 
+/*
 builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -16,9 +20,21 @@ builder.Services.AddAuthentication(x =>
     x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddJwtBearer(x =>
 {
-
+   
 });
+*/
+builder.Services.AddAuthentication().AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        ValidateAudience = false,
+        ValidateIssuer = false,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
+                builder.Configuration.GetSection("AppSettings:Token").Value!))
 
+    };
+});
 
 
 
@@ -37,7 +53,7 @@ builder.Services.AddSwaggerGen(options =>
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
 builder.Services.AddDbContext<SoccerDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SoccerConnectionString")));
-//builder.Services.AddAuthentication().AddJwtBearer();
+
 
 builder.Services.AddCors(p => p.AddPolicy("corspolicy", build =>
 {

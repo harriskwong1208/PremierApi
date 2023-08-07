@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace SoccerApi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController,Authorize]
+    [ApiController,Authorize(Roles ="Admin")]
     public class PlayersController : ControllerBase
     {
         private readonly SoccerDbContext dbContext;
