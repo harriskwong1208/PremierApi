@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "V+KN3BCHu2ihgeLS1/Yf1ym2jYWXlA/TAB6DwxPUT0vQxcXdj8RJL5Ey7b4Gea/W8QRR58OH4cNe6cIl2Fporg==",
+  "dgSpecHash": "gCFT4DumLIbBPNT7qD9vpk0Gf9mPB12pxaKnRxpVYEjJyy5e7Iez2tY3BXfbPJdr2w+YvL4GaUKBLVjZlxRbKA==",
   "success": true,
   "projectFilePath": "C:\\Users\\harri\\Desktop\\SoccerApi\\SoccerApi\\SoccerApi\\SoccerApi.csproj",
   "expectedPackageFiles": [
@@ -47,7 +47,10 @@
     "C:\\Users\\harri\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\harri\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\harri\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\harri\\.nuget\\packages\\scrutor\\3.3.0\\scrutor.3.3.0.nupkg.sha512",
     "C:\\Users\\harri\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "C:\\Users\\harri\\.nuget\\packages\\swashbuckle.aspnetcore.filters\\7.0.8\\swashbuckle.aspnetcore.filters.7.0.8.nupkg.sha512",
+    "C:\\Users\\harri\\.nuget\\packages\\swashbuckle.aspnetcore.filters.abstractions\\7.0.8\\swashbuckle.aspnetcore.filters.abstractions.7.0.8.nupkg.sha512",
     "C:\\Users\\harri\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "C:\\Users\\harri\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
     "C:\\Users\\harri\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512",

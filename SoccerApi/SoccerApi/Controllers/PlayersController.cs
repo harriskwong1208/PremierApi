@@ -6,11 +6,12 @@ using SoccerApi.Models;
 using System.Numerics;
 using System.Diagnostics.Metrics;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SoccerApi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController,Authorize]
     public class PlayersController : ControllerBase
     {
         private readonly SoccerDbContext dbContext;

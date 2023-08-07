@@ -4,11 +4,12 @@ using SoccerApi.Data;
 using SoccerApi.Models.DTO;
 using SoccerApi.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SoccerApi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController,Authorize]
     public class TeamsController : ControllerBase
     {
         private readonly SoccerDbContext dbContext;
