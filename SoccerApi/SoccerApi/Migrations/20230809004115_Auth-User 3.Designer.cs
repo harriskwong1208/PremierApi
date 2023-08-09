@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SoccerApi.Data;
 
@@ -11,9 +12,11 @@ using SoccerApi.Data;
 namespace SoccerApi.Migrations
 {
     [DbContext(typeof(SoccerDbContext))]
-    partial class SoccerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230809004115_Auth-User 3")]
+    partial class AuthUser3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

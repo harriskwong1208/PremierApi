@@ -1,6 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using SoccerApi.Data;
 using SoccerApi.Models;
 using SoccerApi.Models.DTO;
 using System.IdentityModel.Tokens.Jwt;
@@ -13,24 +18,97 @@ namespace SoccerApi.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        public static User user = new User();
-        private readonly IConfiguration _configuration;
 
+        private readonly SoccerDbContext dbContext;
+
+
+
+   //     public static User user = new User();
+       private readonly IConfiguration _configuration;
+
+        /*
         public AuthController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
+        */
+
+
+        public AuthController(SoccerDbContext dbContext, IConfiguration configuration)
+        {
+            _configuration = configuration;
+            this.dbContext = dbContext;
+        }
+
+
+
+        [HttpGet,Authorize(Roles ="User")]
+         public ActionResult<string> GetMyName()
+        {
+            var userName = User?.Identity?.Name;
+            var roleClaims = User?.FindAll(ClaimTypes.Role);
+            var roles = roleClaims?.Select(c=>c.Value).ToList();
+            return Ok(new { userName,roles });
+        }
+
+
+
+
+
+
+
 
 
         [HttpPost("register")]
-        public  ActionResult<User> Register(UserDto request)
+        public async Task<ActionResult> Register([FromBody] UserRequest userRequest)
         {
-            string passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password); 
-            user.Username = request.Username;
-            user.PasswordHash = passwordHash;
+            var userModel = new User
+            {
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(userRequest.PasswordHash),
+                Username = userRequest.Username
+            };
+            dbContext.Users.Add(userModel);
+            await dbContext.SaveChangesAsync();
 
-            return Ok(user);
+            return Ok(userModel);
         }
+
+
+
+
+
+
+        [HttpPost("login")]
+        public async Task<ActionResult> Login([FromBody] UserRequest userRequest)
+        {
+           
+            var user = await dbContext.Users.FirstOrDefaultAsync(u => u.Username == userRequest.Username);
+
+           
+            if (user == null)
+            {
+                return BadRequest("User not found.");
+            }
+
+        
+            if (!BCrypt.Net.BCrypt.Verify(userRequest.PasswordHash, user.PasswordHash))
+            {
+                return BadRequest("Password is invalid");
+            }
+           
+            string token = CreateToken(user);
+
+            return Ok(token);
+                      
+            
+        }
+
+
+
+
+ 
+
+        /*
 
         [HttpPost("login")]
         public ActionResult<User> Login(UserDto request)
@@ -48,13 +126,28 @@ namespace SoccerApi.Controllers
 
             return Ok(token);
         }
+        */
 
+
+
+
+
+
+
+
+
+
+
+
+
+        
         private string CreateToken(User user)
         {
             List<Claim> claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name,user.Username),
-                new Claim(ClaimTypes.Role,"Admin"),
+               // new Claim(ClaimTypes.Role,"Admin"),
+                new Claim(ClaimTypes.Role,"User"),
 
             };
 
@@ -72,6 +165,8 @@ namespace SoccerApi.Controllers
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
             return jwt;
         }
+        
+
     }
 
 }

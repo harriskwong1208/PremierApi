@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace SoccerApi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController,Authorize]
+    [ApiController,Authorize(Roles ="User")]
     public class LeaguesController : ControllerBase
     {
         private readonly SoccerDbContext dbContext;
@@ -102,8 +102,6 @@ namespace SoccerApi.Controllers
             var league = await dbContext.Leagues.FindAsync(id);
             if (league != null)
             {
-
-         
 
                 league.HomeLeague = leagueRequest.HomeLeague;
                 league.EuropeLeague = leagueRequest.EuropeLeague;
