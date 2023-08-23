@@ -64,7 +64,7 @@ namespace SoccerApi.Controllers
         {
             var userModel = new User
             {
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword(userRequest.PasswordHash),
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(userRequest.Password),
                 Username = userRequest.Username
             };
             dbContext.Users.Add(userModel);
@@ -91,7 +91,7 @@ namespace SoccerApi.Controllers
             }
 
         
-            if (!BCrypt.Net.BCrypt.Verify(userRequest.PasswordHash, user.PasswordHash))
+            if (!BCrypt.Net.BCrypt.Verify(userRequest.Password, user.PasswordHash))
             {
                 return BadRequest("Password is invalid");
             }
@@ -102,40 +102,6 @@ namespace SoccerApi.Controllers
                       
             
         }
-
-
-
-
- 
-
-        /*
-
-        [HttpPost("login")]
-        public ActionResult<User> Login(UserDto request)
-        {
-            if (user.Username != request.Username)
-            {
-                return BadRequest("User not found");
-            }   
-            if(!BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
-            {
-                return BadRequest("Wrong Password");
-            }
-
-            string token = CreateToken(user);
-
-            return Ok(token);
-        }
-        */
-
-
-
-
-
-
-
-
-
 
 
 
@@ -158,7 +124,7 @@ namespace SoccerApi.Controllers
             var creds = new SigningCredentials(key,SecurityAlgorithms.HmacSha512Signature);
             var token = new JwtSecurityToken(
                     claims: claims,
-                    expires: DateTime.Now.AddDays(30),
+                    expires: DateTime.Now.AddHours(1),
                     signingCredentials: creds
                 );
 

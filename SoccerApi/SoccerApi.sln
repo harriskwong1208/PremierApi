@@ -5,8 +5,6 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoccerApi", "SoccerApi\SoccerApi.csproj", "{5B16F1DF-19AF-4B03-85FA-DF4721F2FFFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Premier.Web", "Premier.Web\Premier.Web.csproj", "{07B5BDDD-9BDC-430B-BF50-D58F3E02E6C0}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{5B16F1DF-19AF-4B03-85FA-DF4721F2FFFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B16F1DF-19AF-4B03-85FA-DF4721F2FFFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B16F1DF-19AF-4B03-85FA-DF4721F2FFFF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{07B5BDDD-9BDC-430B-BF50-D58F3E02E6C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{07B5BDDD-9BDC-430B-BF50-D58F3E02E6C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{07B5BDDD-9BDC-430B-BF50-D58F3E02E6C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{07B5BDDD-9BDC-430B-BF50-D58F3E02E6C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

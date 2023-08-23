@@ -2,14 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\SoccerApi",
-    "\\SoccerApi\\Premier.Web",
-    "\\SoccerApi\\Premier.Web\\Pages",
     "\\SoccerApi\\SoccerApi",
     "\\SoccerApi\\SoccerApi\\Controllers",
     "\\SoccerApi\\SoccerApi\\Data",
     "\\SoccerApi\\SoccerApi\\Migrations",
-    "\\SoccerApi\\SoccerApi\\Models"
+    "\\SoccerApi\\SoccerApi\\Models",
+    "\\SoccerApi\\SoccerApi\\Models\\DTO"
   ],
-  "SelectedNode": "\\SoccerApi\\SoccerApi\\Controllers\\AuthController.cs",
+  "SelectedNode": "\\SoccerApi\\SoccerApi\\Data\\SoccerDbContext.cs",
   "PreviewInSolutionExplorer": false
 }
